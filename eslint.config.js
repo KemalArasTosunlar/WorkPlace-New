@@ -1,27 +1,29 @@
 import { defineConfig } from 'eslint-define-config';
+import react from 'eslint-plugin-react';
 
 export default defineConfig({
-  env: {
-    browser: true,
-    es2021: true,
+  languageOptions: {
+    globals: {
+      browser: true,
+      es2021: true,
+    },
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-  ],
-  parser: 'babel-eslint',
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: {
+    react,
+  },
   rules: {
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "react/prop-types": "off",
+    'no-unused-vars': 'warn',
+    'no-console': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    // Add more rules as needed
   },
 });
